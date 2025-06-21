@@ -3,13 +3,30 @@
   <div class="course-title">
     {{index}} {{ cardIndex +' '+ course.description }}
   </div>
-  <img width="300" alt="Angular Logo"
+
+  <!-- Apply *ngIf -->
+  <!-- Elvis operator: ? -->
+  <img width="300" alt="Angular Logo" *ngIf="course.iconUrl; else noImage"
        [src]="course.iconUrl">
+
+  <ng-template #noImage>No image available</ng-template>
 
   <div class="course-description">
     {{ course.longDescription }}
   </div>
 
   <button (click)="onCourseViewed()">View Course</button>
+
+
+  <!-- @If  vs *ngIf -->
+  @if (course.id === 1) {
+    <h2>Course with Id 1 detected!</h2>
+  } @else if (course.iconUrl) {
+
+    <h3>Image icon available...</h3>
+  }
+  @else {
+    <h2>No image available!</h2>
+  }
 
 </div>

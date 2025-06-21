@@ -160,3 +160,12 @@ If you are looking for the Complete Typescript 2 Course - Build a REST API, the 
 
 ![Complete Typescript Course](https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png)
 
+## Migrate to the new control flow syntax
+#### Run this command to upgrade your projocts
+##### The @for now forces developers to use a tracking function, so performance-wise it's safer
+##### The @for syntax is automatically included in templates, no explicit imports are needed.
+#### Migration available, stated below
+```bash
+ng generate @angular/core:control-flow
+```
+
