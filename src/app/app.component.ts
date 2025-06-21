@@ -14,6 +14,9 @@ coreCourse = COURSES[0];
 rxjsCourse = COURSES[1];
 ngrxCourse = COURSES[2];
 
+// Optimize the above with less redundancy
+  courses = COURSES;
+
   onCourseSelected(course: Course) {
     console.log('Course selected... App ts:: ', course);
   }

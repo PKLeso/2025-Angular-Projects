@@ -7,12 +7,21 @@
 
 <div class="courses">
 
+  <!-- New Angular Control Flow Syntax/primitives - @if, @for, @switch -->
+  <!-- Old Angular Control Flow Syntax/primitives - @ngIf, @ngFor, @ngSwitch -->
+
   <!-- Pass input to another component - declare the @Input with the same name as 'title: string' -->
-  <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
+<!--  <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>-->
 
-  <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
+<!--  <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>-->
 
-  <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>
+<!--  <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>-->
+
+  <!-- Optimize the above with less redundancy -->
+  <!-- @for track by id -> because it has to uniquely identify each item in the array-->
+  @for (course of courses; track course.id) {
+    <course-card (courseSelected)="onCourseSelected($event)" [course]="course" />
+  }
 
 </div>
 
