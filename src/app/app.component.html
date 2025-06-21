@@ -8,7 +8,7 @@
 <div class="courses">
 
   <!-- New Angular Control Flow Syntax/primitives - @if, @for, @switch -->
-  <!-- Old Angular Control Flow Syntax/primitives - @ngIf, @ngFor, @ngSwitch -->
+  <!-- --------------------------------------------------------------- -->
 
   <!-- Pass input to another component - declare the @Input with the same name as 'title: string' -->
 <!--  <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>-->
@@ -37,6 +37,21 @@
       No courses available
     </div>
   }
+
+  <h1>** End of new at-for **</h1>
+  <h1>- Beginning of Old *ngFor -</h1>
+
+  <!-- Old Angular Control Flow Syntax/primitives - @ngIf, @ngFor, @ngSwitch -->
+  <course-card *ngFor="let course of courses; index as i;
+    first as isFirst; last as last; even as even; odd as odd;"
+    (courseSelected)="onCourseSelected($event)"
+               [course]="ngrxCourse"
+               [cardIndex]="i + 1"
+               [class.is-first]="isFirst"
+               [class.is-last]="last"
+               [class.is-even]="even"
+               [class.is-odd]="odd"
+  />
 
 </div>
 

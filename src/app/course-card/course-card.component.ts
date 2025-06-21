@@ -17,6 +17,10 @@ course: Course;
 @Input({ required: true })
 index: number;
 
+// Binding for the old ngFor
+  @Input()
+  cardIndex: number;
+
 // If the name differs from your child's component, you need to pass it as a parameter to the decorator.
 @Output('courseSelected')
 courseEmitter: EventEmitter<Course> = new EventEmitter<Course>();
