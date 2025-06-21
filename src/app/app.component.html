@@ -19,8 +19,23 @@
 
   <!-- Optimize the above with less redundancy -->
   <!-- @for track by id -> because it has to uniquely identify each item in the array-->
-  @for (course of courses; track course.id) {
-    <course-card (courseSelected)="onCourseSelected($event)" [course]="course" />
+  <!-- Directly use the $odd or $last on consumption as compared to 'let even = $even;' and 'let first = $first;' -->
+  @for (course of courses; track course.id; let count = $count;
+    let index = $index; let first = $first; let even = $even;) {
+    <course-card (courseSelected)="onCourseSelected($event)"
+                 [course]="course"
+                 [index]="index"
+                 [class.is-first]="first"
+                 [class.is-last]="$last"
+                 [class.is-even]="even"
+                 [class.is-odd]="$odd"
+    />
+  }
+  <!-- @Empty to display a message when our above array is empty -->
+  @empty {
+    <div class="no-courses">
+      No courses available
+    </div>
   }
 
 </div>

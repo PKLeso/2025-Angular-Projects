@@ -15,7 +15,7 @@ rxjsCourse = COURSES[1];
 ngrxCourse = COURSES[2];
 
 // Optimize the above with less redundancy
-  courses = COURSES;
+  courses = [...COURSES]; //COURSES; Make a copy of the Courses list with the spread operator ...Courses
 
   onCourseSelected(course: Course) {
     console.log('Course selected... App ts:: ', course);
