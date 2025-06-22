@@ -1,0 +1,6 @@
+/* Create state class
+   - That focuses on courses that has a 'Beginner course'
+*/
+.course-card.beginner {
+  background: lightsalmon;
+}

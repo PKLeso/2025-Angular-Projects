@@ -1,32 +1,74 @@
-<div class="course-card">
+@if (course){
 
-  <div class="course-title">
-    {{index}} {{ cardIndex +' '+ course.description }}
+  <!-- ngClass can take a string, an array and also a configuration/object -->
+  <!-- String: [ngClass]="'beginner'" -->
+  <!-- Array: [ngClass]="['beginner', 'course-card']" -->
+  <!-- Configuration: [ngClass]="{'beginner':true, 'course-card':true, 'advanced': course.category === 'ADVANCED'}" -->
+  <!-- Most preferred and cleaner: Function: cardClasses() -->
+  <!-- Configuration [ngClass]="{'beginner': course.category === 'BEGINNER'}" -->
+
+  <!-- ngStyle: [ngStyle]="cardStyles()" -->
+
+  <div class="course-card"
+  [ngClass]="cardClasses()"
+  >
+
+    <div class="course-title">
+      {{index}} {{ cardIndex +' '+ course.description }}
+    </div>
+
+    <!-- Apply *ngIf -->
+    <!-- Elvis operator: ? -->
+    <!-- *ngIf="course.iconUrl; else noImage" -->
+    <img width="300" alt="Angular Logo"
+         [src]="course.iconUrl">
+
+    <!--  <ng-template #noImage>No image available</ng-template>-->
+
+    <div class="course-description">
+      {{ course.longDescription }}
+    </div>
+
+<!--     @Switch-->
+    <div class="course-category">
+      @switch (course.category) {
+        @case ('BEGINNER') {
+          <div class="category">Beginner</div>
+          }
+        @case ('INTERMEDIATE') {
+          <div class="category">Intermediate</div>
+        }
+        @case ('ADVANCED') {
+          <div class="category">Advanced</div>
+        }
+        @default {
+          <div class="category">Unknown</div>
+        }
+      }
+    </div>
+
+    <!-- ngSwitch old way-->
+    <div class="course-category" ngSwitch="course.category">
+      <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+      <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+      <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+      <div class="category" *ngSwitchDefault>Unknown</div>
+    </div>
+
+    <button (click)="onCourseViewed()">View Course</button>
+
+
+    <!-- @If  vs *ngIf -->
+    @if (course.id === 1) {
+      <h2>Course with Id 1 detected!</h2>
+    } @else if (course.iconUrl) {
+
+      <h3>Image icon available...</h3>
+    }
+    @else {
+      <h2>No image available!</h2>
+    }
+
   </div>
 
-  <!-- Apply *ngIf -->
-  <!-- Elvis operator: ? -->
-  <img width="300" alt="Angular Logo" *ngIf="course.iconUrl; else noImage"
-       [src]="course.iconUrl">
-
-  <ng-template #noImage>No image available</ng-template>
-
-  <div class="course-description">
-    {{ course.longDescription }}
-  </div>
-
-  <button (click)="onCourseViewed()">View Course</button>
-
-
-  <!-- @If  vs *ngIf -->
-  @if (course.id === 1) {
-    <h2>Course with Id 1 detected!</h2>
-  } @else if (course.iconUrl) {
-
-    <h3>Image icon available...</h3>
-  }
-  @else {
-    <h2>No image available!</h2>
-  }
-
-</div>
+}

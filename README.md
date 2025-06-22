@@ -164,8 +164,20 @@ If you are looking for the Complete Typescript 2 Course - Build a REST API, the 
 #### Run this command to upgrade your projocts
 ##### The @for now forces developers to use a tracking function, so performance-wise it's safer
 ##### The @for syntax is automatically included in templates, no explicit imports are needed.
+
+##### @if vs *ngIf
+###### -less verbose, more intuitive
+###### -no need for imports
+###### -supports else if and else conditions
+
 #### Migration available, stated below
 ```bash
 ng generate @angular/core:control-flow
 ```
+
+## Apply old *ngIf or the Elvis operator '?'
+
+#### <img width="300" alt="Angular Logo" *ngIf="course.iconUrl; else noImage"
+#### [src]="course?.iconUrl">
+#### <ng-template #noImage>No image available</ng-template>
 

@@ -1,9 +1,12 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Course} from "../model/course";
+import {NgClass, NgStyle} from "@angular/common";
 
 @Component({
   selector: 'course-card',
-  imports: [],
+  imports: [
+    NgClass
+  ],
   templateUrl: './course-card.component.html',
   styleUrl: './course-card.component.css'
 })
@@ -36,5 +39,25 @@ constructor() { }
   this.courseEmitter.emit(this.course);
   this.courseSelected.emit(this.course);
 }
+
+// ngCLass configurations
+  cardClasses() {
+  if (this.course.category === 'BEGINNER'){
+      //return ['beginner', 'course-card'];
+      return 'beginner';
+    }
+
+  // the above OR the below...
+  // return {
+  //     'beginner': this.course.category === 'BEGINNER'
+  //   };
+  }
+
+  // ngStyle configurations
+  cardStyles() {
+    return {
+      'background-image': 'url('+ this.course.iconUrl +')'
+    };
+  }
 
 }
