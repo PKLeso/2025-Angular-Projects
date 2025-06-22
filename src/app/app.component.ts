@@ -10,6 +10,16 @@ import {Course} from "./model/course";
 })
 export class AppComponent {
 
+  /* Angular pipes
+  * An Angular pipe is a feature in Angular used to transform data before it
+  * is displayed in the view (template). Pipes are commonly used in interpolation
+  * or binding expressions to format or modify values in a readable or desired way.
+  * */
+  startDate = new Date(2025, 5, 22);
+  title = COURSES[0].description;
+  price = 9.9952233;
+  rate = 0.67;
+
 coreCourse = COURSES[0];
 rxjsCourse = COURSES[1];
 ngrxCourse = COURSES[2];

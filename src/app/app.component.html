@@ -5,6 +5,35 @@
 
 </div>
 
+<!-- Angular Pipes -->
+<div class="demo">
+  <h3>Angular Pipes</h3>
+  <div>Start date: {{ startDate | date }}</div>
+  <!-- Add permitter / modify the date further -->
+  <div>Start date: {{ startDate | date: 'MMM/dd/yyyy' }}</div>
+  <!-- Pipe for string -->
+  <h4>String Pipes</h4>
+  <div>Upper case: {{ title | uppercase }}</div>
+  <div>Lower case: {{ title | lowercase }}</div>
+  <div>Title case: {{ title | titlecase }}</div>
+  <!-- Pipe for number -->
+  <h4>Number Pipes</h4>
+  <div>Number: {{ price | number: '3.3-5' }}</div> <!-- minimum of 3 . minimum of 3 - max of 5 digits -->
+  <div>Currency: {{ price | currency: 'R' }}</div>
+  <!-- Pipe for percentage -->
+  <h4>Percentage Pipe</h4>
+  <div>Percentage: {{ rate | percent }}</div>
+  <!-- Pipe for slice - to slice an array -->
+  <h4>Slice Pipe applied on the below array</h4>
+  <!-- Pipe for debudding JSON -->
+  <h4>JSON Pipe</h4>
+  <!--  <div>JSON: {{ courses | json }}</div>-->
+  <!-- Key Value Pipe -->
+  <h4>Key Value Pipe</h4>
+    <div *ngFor="let pair of coreCourse | keyvalue">
+      Key Value: {{ pair.key +' '+ pair.value }}</div>
+</div>
+
 <div class="courses">
 
   <!-- New Angular Control Flow Syntax/primitives - @if, @for, @switch -->
@@ -20,7 +49,7 @@
   <!-- Optimize the above with less redundancy -->
   <!-- @for track by id -> because it has to uniquely identify each item in the array-->
   <!-- Directly use the $odd or $last on consumption as compared to 'let even = $even;' and 'let first = $first;' -->
-  @for (course of courses; track course.id; let count = $count;
+  @for (course of courses | slice:0:2; track course.id; let count = $count;
     let index = $index; let first = $first; let even = $even;) {
     <course-card (courseSelected)="onCourseSelected($event)"
                  [course]="course"
